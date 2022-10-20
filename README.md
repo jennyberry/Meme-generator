@@ -8,14 +8,14 @@ A part of React course from Scrimba
 
 ## What I learn while building this project
 
-##### Event listeners
+### Event listeners
 
 Mouse event:
 
 - onClick
 - onChange
 
-##### State:
+### State:
 
 React.useState() used to keep track of strings, numbers, booleans, arrays, objects, and any combination of these.
 
@@ -59,14 +59,14 @@ function Profile() {
 }
 ```
 
-##### Conditional rendering:
+### Conditional rendering:
 
 ```
 {truthy statement ? "ifTrue" : "ifFalse"}
 {truthy statement && "display something"}
 ```
 
-##### Forms:
+### Forms:
 
 Data is held in local state as the form is being filled out.
 
@@ -76,7 +76,9 @@ A checkbox uses the `checked` property to determine what should be shaced in sta
 
 Trigger a form submit by onSibmit handler on the `form` elememt.
 
-##### Side effect: Any code that affects an outside system
+### Side effect:
+
+Any code that affects an outside system
 
 ```
 React.useEffect(<function>, <dependency>)
