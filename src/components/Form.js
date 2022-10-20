@@ -1,5 +1,5 @@
 import React from "react";
-import memesData from "../memesData.js";
+// import memesData from "../memesData.js";
 
 export default function Form() {
   const [meme, setMeme] = React.useState({
@@ -7,11 +7,23 @@ export default function Form() {
     bottomText: "",
     randomImage: "",
   });
+  const [allMemes, setAllMemes] = React.useState([]);
+  // React.useEffect(() => {
+  //   fetch("https://api.memegen.link/templates/") <-- this api has more img resoure but super slow
+  //     .then((res) => res.json())
+  //     .then((data) => setAllMemes(data));
+  // }, []);
+  React.useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((data) => setAllMemes(data.data.memes));
+  }, []);
 
   function getMemeImage() {
-    const memeArray = memesData.data.memes;
-    const random = Math.floor(Math.random() * memeArray.length);
-    const url = memeArray[random].url;
+    // const memeArray = memesData.data.memes;
+    const random = Math.floor(Math.random() * allMemes.length);
+    // const url = allMemes[random].blank; <-- if use slow api
+    const url = allMemes[random].url;
     setMeme((prevMeme) => ({
       ...prevMeme,
       randomImage: url,
