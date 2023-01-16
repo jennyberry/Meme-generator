@@ -1,7 +1,15 @@
 import React from "react";
 // import memesData from "../memesData.js";
-
+// import { saveAs } from "file-saver";
+import Export from "../utils/Export";
+import { BsBoxArrowInDown } from "react-icons/bs";
 export default function Form() {
+  // //quick save image file only
+  // const downloadImage = () => {
+  //   saveAs(meme.randomImage, "image.jpg"); // Put your image url here.
+  // };
+
+  const captureRef = React.useRef(); //export image w text
   const [meme, setMeme] = React.useState({
     topText: "",
     bottomText: "",
@@ -60,8 +68,24 @@ export default function Form() {
         <button className="form-btn" onClick={getMemeImage}>
           Get a new meme image 🖼
         </button>
-        <div className="meme">
-          <img src={meme.randomImage} className="meme--image" />
+        <button
+          className="download-btn"
+          onClick={() => Export(captureRef.current)}
+        >
+          <i>
+            <BsBoxArrowInDown
+              style={{
+                top: "20px",
+                marginRight: "10px",
+              }}
+              size="30px"
+            />
+          </i>
+          Download
+        </button>
+
+        <div className="meme" id="capture" ref={captureRef}>
+          <img src={meme.randomImage} className="meme--image" alt="meme name" />
           <h2 className="meme--text top">{meme.topText}</h2>
           <h2 className="meme--text bottom">{meme.bottomText}</h2>
         </div>
